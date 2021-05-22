@@ -1,0 +1,1 @@
+enum action { delete, edit }
