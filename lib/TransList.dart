@@ -84,10 +84,10 @@ class _ListTrans extends State<ListTrans> {
   }
 
   Color _setcolor(Transaction tran) {
-    if (tran.sys >= 140) {
+    if (tran.sys >= 140 || tran.dia >= 90) {
       return Colors.red;
     } else {
-      if ((tran.sys >= 120)) {
+      if ((tran.sys >= 120 || tran.dia >= 80)) {
         return Colors.red[100];
       } else {
         if ((tran.sys >= 100)) {
