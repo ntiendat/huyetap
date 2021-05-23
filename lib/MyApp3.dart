@@ -79,12 +79,14 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     DateTime now = new DateTime.now();
     transaction.date = DateFormat("hh:mm:ss dd/MM").format(now);
     _transactions.add(transaction);
+
     _transactions.sort((a, b) {
       var adate = a.date;
       var bdate = b.date;
       return bdate.compareTo(
           adate); //to get the order other way just switch `adate & bdate`
     });
+
     setState(() {
       transaction = Transaction(sys: 0, pulse: 0, dia: 0, date: '');
     });
@@ -111,6 +113,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
                 children: [
                   TextField(
                     controller: _contentController,
+                    keyboardType: TextInputType.number,
                     onChanged: (text) {
                       setState(() {
                         DateTime now = new DateTime.now();
@@ -124,6 +127,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
                   ),
                   TextField(
                     controller: _priceController,
+                    keyboardType: TextInputType.number,
                     onChanged: (text) {
                       setState(() {
                         DateTime now = new DateTime.now();
@@ -135,6 +139,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
                   ),
                   TextField(
                     controller: _pulseController,
+                    keyboardType: TextInputType.number,
                     onChanged: (text) {
                       setState(() {
                         DateTime now = new DateTime.now();
@@ -151,7 +156,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
                         Navigator.of(context).pop();
                       },
                       child: Text(
-                        'Mua',
+                        'Thêm',
                         style: TextStyle(color: Colors.red),
                       )),
                 ],
@@ -207,7 +212,10 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
                   //       style: TextStyle(
                   //           color: Colors.white, fontFamily: 'Dancing_Script'),
                   //     )),
-                  TransList(transactions: this._transactions)
+                  // TransList(transactions: this._transactions),
+                  ListTrans(
+                    transactions: this._transactions,
+                  )
                 ],
               ),
             ),
