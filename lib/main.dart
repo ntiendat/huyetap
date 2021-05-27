@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
-import 'package:flutter/widgets.dart';
-import 'Transaction.dart';
-import 'dart:async';
-import 'dart:convert';
-import 'package:flutter/foundation.dart';
-import 'MyApp3.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_calendar/source/presentation/presentation.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  final appDocumentDirectory = await getApplicationDocumentsDirectory();
-  Hive.init(appDocumentDirectory.path);
-  await Hive.openBox<Transaction>('ts');
-  return runApp(MaterialApp(
-    title: 'myapp',
-    theme: ThemeData(
-        primaryColor: Colors.green[300], accentColor: Colors.pink[500]),
-    home: MyApp(),
-  ));
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: HomeScreen(),
+    );
+  }
 }
